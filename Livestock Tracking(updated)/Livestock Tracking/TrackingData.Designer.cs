@@ -112,6 +112,7 @@
             // 
             // btnSheep
             // 
+            this.btnSheep.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSheep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSheep.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnSheep.Location = new System.Drawing.Point(791, 461);
@@ -119,7 +120,7 @@
             this.btnSheep.Size = new System.Drawing.Size(115, 37);
             this.btnSheep.TabIndex = 13;
             this.btnSheep.Text = "Sheeps";
-            this.btnSheep.UseVisualStyleBackColor = true;
+            this.btnSheep.UseVisualStyleBackColor = false;
             this.btnSheep.Click += new System.EventHandler(this.btnSheep_Click);
             // 
             // panel7
