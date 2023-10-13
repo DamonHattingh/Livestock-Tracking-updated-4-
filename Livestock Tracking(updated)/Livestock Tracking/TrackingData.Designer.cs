@@ -103,6 +103,7 @@
             // 
             // btnHorse
             // 
+            this.btnHorse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnHorse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnHorse.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnHorse.Location = new System.Drawing.Point(912, 462);
@@ -111,7 +112,7 @@
             this.btnHorse.Size = new System.Drawing.Size(115, 37);
             this.btnHorse.TabIndex = 12;
             this.btnHorse.Text = "Horses";
-            this.btnHorse.UseVisualStyleBackColor = true;
+            this.btnHorse.UseVisualStyleBackColor = false;
             this.btnHorse.Click += new System.EventHandler(this.btnHorse_Click);
             // 
             // btnSheep
