@@ -296,6 +296,8 @@ namespace Livestock_Tracking
             WindowState = FormWindowState.Minimized;
         }
 
+        
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -440,6 +442,90 @@ namespace Livestock_Tracking
             }
         }
 
+        public void Thermal()
+        {
+            string path = @"..\..\Scripts\temperature.txt";
+            string text = File.ReadAllText(path);
+
+            // Specify the path to python.exe and your Python script
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
+            string scriptPath = @"..\Scripts\Thermal.py"; // Change to your Python script path
+
+            // Create a new process
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            // Start the process
+            process.Start();
+
+            // Read the output of the Python script (if needed)
+            string output = process.StandardOutput.ReadToEnd();
+
+            // Wait for the process to exit
+            process.WaitForExit();
+
+            // Display output (if needed)
+            MessageBox.Show("Python script executed:\n" + output);
+        }
+
+
+        public void simulateDroneFlightTigers()
+        {
+            string path = @"..\..\Scripts\tiger_counts.txt";
+            string text = File.ReadAllText(path);
+
+            // Specify the path to python.exe and your Python script
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
+            string scriptPath = @"..\Scripts\Tigers.py"; // Change to your Python script path
+
+            // Create a new process
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            // Start the process
+            process.Start();
+
+            // Read the output of the Python script (if needed)
+            string output = process.StandardOutput.ReadToEnd();
+
+            // Wait for the process to exit
+            process.WaitForExit();
+
+            // Display output (if needed)
+            MessageBox.Show("Python script executed:\n" + output);
+
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("simulateFlight", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@animalCount", int.Parse(text));
+                    command.Parameters.AddWithValue("@dateTime", DateTime.Now);
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
+
+        }
+
         private void SendCommandsToMavProxy(string[] commands)
         {
             Process[] processes = Process.GetProcessesByName("mavproxy");
@@ -457,6 +543,16 @@ namespace Livestock_Tracking
                     sw.Close();
                 }
             }
+        }
+
+        private void btnTiger_Click(object sender, EventArgs e)
+        {
+            simulateDroneFlightTigers();
+        }
+
+        private void btnThermal_Click(object sender, EventArgs e)
+        {
+            Thermal();
         }
     }
 }

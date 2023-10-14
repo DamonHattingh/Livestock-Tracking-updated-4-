@@ -50,6 +50,9 @@
             this.btnMorning = new System.Windows.Forms.Button();
             this.btnEvening = new System.Windows.Forms.Button();
             this.btnLaunch = new System.Windows.Forms.Button();
+            this.btnLaunch2 = new System.Windows.Forms.Button();
+            this.btnTiger = new System.Windows.Forms.Button();
+            this.btnThermal = new System.Windows.Forms.Button();
             this.panel7.SuspendLayout();
             this.controlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrackingData)).BeginInit();
@@ -94,7 +97,7 @@
             // 
             // btnCows
             // 
-            this.btnCows.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnCows.BackColor = System.Drawing.Color.GhostWhite;
             this.btnCows.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCows.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnCows.Location = new System.Drawing.Point(775, 375);
@@ -108,7 +111,7 @@
             // 
             // btnHorse
             // 
-            this.btnHorse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnHorse.BackColor = System.Drawing.Color.GhostWhite;
             this.btnHorse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnHorse.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnHorse.Location = new System.Drawing.Point(684, 375);
@@ -122,7 +125,7 @@
             // 
             // btnSheep
             // 
-            this.btnSheep.BackColor = System.Drawing.Color.Orange;
+            this.btnSheep.BackColor = System.Drawing.Color.GhostWhite;
             this.btnSheep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSheep.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnSheep.Location = new System.Drawing.Point(593, 375);
@@ -198,6 +201,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.btnLaunch2);
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.btnSheep1);
             this.panel1.Controls.Add(this.btnHorses1);
@@ -326,11 +330,53 @@
             this.btnLaunch.UseVisualStyleBackColor = false;
             this.btnLaunch.Click += new System.EventHandler(this.btnLaunch_Click);
             // 
+            // btnLaunch2
+            // 
+            this.btnLaunch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLaunch2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLaunch2.Location = new System.Drawing.Point(-2, 335);
+            this.btnLaunch2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLaunch2.Name = "btnLaunch2";
+            this.btnLaunch2.Size = new System.Drawing.Size(205, 34);
+            this.btnLaunch2.TabIndex = 21;
+            this.btnLaunch2.Text = "Launch";
+            this.btnLaunch2.UseVisualStyleBackColor = true;
+            // 
+            // btnTiger
+            // 
+            this.btnTiger.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnTiger.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnTiger.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnTiger.Location = new System.Drawing.Point(593, 409);
+            this.btnTiger.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTiger.Name = "btnTiger";
+            this.btnTiger.Size = new System.Drawing.Size(86, 30);
+            this.btnTiger.TabIndex = 19;
+            this.btnTiger.Text = "Tiger";
+            this.btnTiger.UseVisualStyleBackColor = false;
+            this.btnTiger.Click += new System.EventHandler(this.btnTiger_Click);
+            // 
+            // btnThermal
+            // 
+            this.btnThermal.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnThermal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnThermal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnThermal.Location = new System.Drawing.Point(684, 409);
+            this.btnThermal.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThermal.Name = "btnThermal";
+            this.btnThermal.Size = new System.Drawing.Size(86, 30);
+            this.btnThermal.TabIndex = 20;
+            this.btnThermal.Text = "Thermal";
+            this.btnThermal.UseVisualStyleBackColor = false;
+            this.btnThermal.Click += new System.EventHandler(this.btnThermal_Click);
+            // 
             // TrackingData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 466);
+            this.Controls.Add(this.btnThermal);
+            this.Controls.Add(this.btnTiger);
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.btnEvening);
             this.Controls.Add(this.btnMorning);
@@ -381,5 +427,8 @@
         private System.Windows.Forms.Button btnMorning;
         private System.Windows.Forms.Button btnEvening;
         private System.Windows.Forms.Button btnLaunch;
+        private System.Windows.Forms.Button btnLaunch2;
+        private System.Windows.Forms.Button btnTiger;
+        private System.Windows.Forms.Button btnThermal;
     }
 }
