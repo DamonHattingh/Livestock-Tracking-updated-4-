@@ -388,7 +388,7 @@ namespace Livestock_Tracking
                     Arguments = pythonScript,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = @"C:\Drone Project 2\LivestockTracking-main\LivestockTracking-main\Livestock Tracking(updated) (4)\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+                    WorkingDirectory = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
                 };
 
                 using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
@@ -420,7 +420,7 @@ namespace Livestock_Tracking
                     Arguments = pythonScript,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = @"C:\Drone Project 2\LivestockTracking-main\LivestockTracking-main\Livestock Tracking(updated) (4)\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+                    WorkingDirectory = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
                 };
 
                 using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
