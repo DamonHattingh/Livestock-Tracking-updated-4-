@@ -358,15 +358,15 @@ namespace Livestock_Tracking
                 StreamWriter sw = cmdProcess.StandardInput;
                 StreamReader sr = cmdProcess.StandardOutput;
 
-                // Change the drive to E:
-                sw.WriteLine("E:");
+                //// Change the drive to E:
+                //sw.WriteLine("E:");
 
-                // Run the specified command
-                sw.WriteLine(@"E:\ardupilot\Tools\autotest\fg_quad_view.bat 2>&1"); // Add 2>&1 here as well
+                //// Run the specified command
+                //sw.WriteLine(@"E:\ardupilot\Tools\autotest\fg_quad_view.bat 2>&1"); // Add 2>&1 here as well
 
-                // Close the input stream and wait for the second part (cmd) to complete
-                sw.Close();
-                await Task.Run(() => cmdProcess.WaitForExit());
+                //// Close the input stream and wait for the second part (cmd) to complete
+                //sw.Close();
+                //await Task.Run(() => cmdProcess.WaitForExit());
 
             }
             catch (Exception ex)
@@ -381,8 +381,8 @@ namespace Livestock_Tracking
             try
             {
                 // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
-                string pythonExecutable = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\mainArdu.py"; // Update this path.
+                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
+                string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
                 {
@@ -413,8 +413,8 @@ namespace Livestock_Tracking
             try
             {
                 // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
-                string pythonExecutable = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\mainArdu2.py"; // Update this path.
+                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
+                string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
                 {
