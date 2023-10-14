@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Automation;
+using Microsoft.Scripting.Hosting;
 
 namespace Livestock_Tracking
 {
@@ -298,6 +300,161 @@ namespace Livestock_Tracking
 
             Login loginForm = new Login();
             loginForm.Show();
+        }
+
+        private async void btnLaunch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("Launching ArduPilot...");
+                // Specify the path to the Cygwin64 executable (mintty.exe) and any desired command or arguments.
+                string cygwinExecutable = @"C:\cygwin64\bin\mintty.exe"; // Update the path accordingly
+                string commands = "cd /cygdrive/e/ardupilot/ArduCopter && ../Tools/autotest/sim_vehicle.py --map --console";
+
+                ProcessStartInfo cygwinStartInfo = new ProcessStartInfo
+                {
+                    FileName = cygwinExecutable,
+                    Arguments = $"-e /bin/bash -l -c \"{commands} 2>&1\"", // Add 2>&1 to redirect both stdout and stderr
+                    WorkingDirectory = "C:\\cygwin64\\bin", // Set the working directory if needed
+                    UseShellExecute = false,
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                };
+
+                Process cygwinProcess = new Process
+                {
+                    StartInfo = cygwinStartInfo,
+                    EnableRaisingEvents = true
+                };
+
+                cygwinProcess.Start();
+
+                // Wait for the first part (Cygwin) to complete
+                await Task.Run(() => cygwinProcess.WaitForExit());
+
+                // Now, start the second part (cmd)
+                ProcessStartInfo cmdStartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true, // Redirect standard error as well
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                Process cmdProcess = new Process
+                {
+                    StartInfo = cmdStartInfo,
+                    EnableRaisingEvents = true
+                };
+
+                cmdProcess.Start();
+
+                StreamWriter sw = cmdProcess.StandardInput;
+                StreamReader sr = cmdProcess.StandardOutput;
+
+                // Change the drive to E:
+                sw.WriteLine("E:");
+
+                // Run the specified command
+                sw.WriteLine(@"E:\ardupilot\Tools\autotest\fg_quad_view.bat 2>&1"); // Add 2>&1 here as well
+
+                // Close the input stream and wait for the second part (cmd) to complete
+                sw.Close();
+                await Task.Run(() => cmdProcess.WaitForExit());
+
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that may occur
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btnEvening_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
+                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
+                string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
+
+                ProcessStartInfo pythonStartInfo = new ProcessStartInfo
+                {
+                    FileName = pythonExecutable,
+                    Arguments = pythonScript,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WorkingDirectory = @"C:\Drone Project 2\LivestockTracking-main\LivestockTracking-main\Livestock Tracking(updated) (4)\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+                };
+
+                using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
+                {
+                    pythonProcess.Start();
+                    pythonProcess.WaitForExit();
+                }
+
+                // Optionally, you can display a message or perform other actions after script execution.
+                MessageBox.Show("Python script executed successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btnMorning_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
+                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
+                string pythonScript = @"..\Scripts\mainArdu2.py"; // Update this path.
+
+                ProcessStartInfo pythonStartInfo = new ProcessStartInfo
+                {
+                    FileName = pythonExecutable,
+                    Arguments = pythonScript,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WorkingDirectory = @"C:\Drone Project 2\LivestockTracking-main\LivestockTracking-main\Livestock Tracking(updated) (4)\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+                };
+
+                using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
+                {
+                    pythonProcess.Start();
+                    pythonProcess.WaitForExit();
+                }
+
+                // Optionally, you can display a message or perform other actions after script execution.
+                MessageBox.Show("Python script executed successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void SendCommandsToMavProxy(string[] commands)
+        {
+            Process[] processes = Process.GetProcessesByName("mavproxy");
+
+            foreach (Process process in processes)
+            {
+                if (!string.IsNullOrWhiteSpace(process.MainWindowTitle) && process.MainWindowTitle.Contains("C:\\Program Files (x86)\\MAVProxy\\mavproxy.exe"))
+                {
+                    StreamWriter sw = process.StandardInput;
+                    foreach (string command in commands)
+                    {
+                        Debug.WriteLine($"Sending command: {command}");
+                        sw.WriteLine(command);
+                    }
+                    sw.Close();
+                }
+            }
         }
     }
 }

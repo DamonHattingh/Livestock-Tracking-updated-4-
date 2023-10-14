@@ -67,5 +67,6 @@ E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livest
 E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock_Tracking.TrackingData.resources
 E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.GenerateResource.cache
 E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.CoreCompileInputs.cache
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.CopyComplete
 E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.exe
 E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.pdb
