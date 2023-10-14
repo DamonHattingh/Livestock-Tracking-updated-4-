@@ -91,7 +91,7 @@
             // 
             // btnCows
             // 
-            this.btnCows.BackColor = System.Drawing.Color.Red;
+            this.btnCows.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCows.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCows.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnCows.Location = new System.Drawing.Point(775, 375);

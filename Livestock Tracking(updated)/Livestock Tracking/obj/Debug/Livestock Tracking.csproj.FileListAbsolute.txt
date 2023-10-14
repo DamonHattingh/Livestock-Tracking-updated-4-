@@ -57,3 +57,15 @@ C:\Users\User\Documents\Repos\Livestock Tracking(updated)\Livestock Tracking\obj
 C:\Users\User\Documents\Repos\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Repos\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.exe
 C:\Users\User\Documents\Repos\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.pdb
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\bin\Debug\Livestock Tracking.exe.config
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\bin\Debug\Livestock Tracking.exe
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\bin\Debug\Livestock Tracking.pdb
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.AssemblyReference.cache
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.SuggestedBindingRedirects.cache
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock_Tracking.Login.resources
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock_Tracking.Properties.Resources.resources
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock_Tracking.TrackingData.resources
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.GenerateResource.cache
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.csproj.CoreCompileInputs.cache
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.exe
+E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\obj\Debug\Livestock Tracking.pdb
