@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Automation;
 using Microsoft.Scripting.Hosting;
+using System.Threading;
+
 
 namespace Livestock_Tracking
 {
@@ -379,8 +381,8 @@ namespace Livestock_Tracking
             try
             {
                 // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
-                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
+                string pythonExecutable = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\venv\Scripts\python.exe"; // Update this path.
+                string pythonScript = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\mainArdu.py"; // Update this path.
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
                 {
@@ -411,8 +413,8 @@ namespace Livestock_Tracking
             try
             {
                 // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
-                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"..\Scripts\mainArdu2.py"; // Update this path.
+                string pythonExecutable = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\venv\Scripts\python.exe"; // Update this path.
+                string pythonScript = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts\mainArdu2.py"; // Update this path.
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
                 {

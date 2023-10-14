@@ -187,12 +187,12 @@
             this.dgvTrackingData.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgvTrackingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrackingData.GridColor = System.Drawing.Color.Teal;
-            this.dgvTrackingData.Location = new System.Drawing.Point(538, 90);
+            this.dgvTrackingData.Location = new System.Drawing.Point(384, 90);
             this.dgvTrackingData.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTrackingData.Name = "dgvTrackingData";
             this.dgvTrackingData.RowHeadersWidth = 51;
             this.dgvTrackingData.RowTemplate.Height = 24;
-            this.dgvTrackingData.Size = new System.Drawing.Size(323, 202);
+            this.dgvTrackingData.Size = new System.Drawing.Size(477, 202);
             this.dgvTrackingData.TabIndex = 0;
             // 
             // panel1
