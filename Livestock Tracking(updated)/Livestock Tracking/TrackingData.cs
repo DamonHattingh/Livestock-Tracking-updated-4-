@@ -16,6 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Automation;
 using Microsoft.Scripting.Hosting;
 using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 
 namespace Livestock_Tracking
@@ -23,7 +24,7 @@ namespace Livestock_Tracking
     public partial class TrackingData : Form
     {
 
-        string connectionString = "Server=localhost;Database=EastwoodFarm_DB;Integrated Security=True;";
+        string connectionString = "Server=localhost;Database=EastwoodFarm_database;Integrated Security=True;";
         SqlConnection connection;
         SqlCommand command;
         SqlDataAdapter adapter;
@@ -31,17 +32,19 @@ namespace Livestock_Tracking
 
         private void TrackingData_Load(object sender, EventArgs e)
         {
-            cowTrackingData();
-            dateList();
+            overallData();
+            // dateList();
         }
 
-        public void allAnimalsData()
+
+        // Methods to display data of all animals and specific animals in the data grid view.
+        public void overallData()
         {
             connection = new SqlConnection(connectionString);
 
             connection.Open();
 
-            command = new SqlCommand("displayAllTrackingData", connection);
+            command = new SqlCommand("overallData", connection);
 
             command.CommandType = CommandType.StoredProcedure;
 
@@ -56,13 +59,13 @@ namespace Livestock_Tracking
             connection.Close();
         }
 
-        public void cowTrackingData()
+        public void cowData()
         {
             connection = new SqlConnection(connectionString);
 
             connection.Open();
 
-            command = new SqlCommand("displayCowTrackingData", connection);
+            command = new SqlCommand("cowData", connection);
 
             command.CommandType = CommandType.StoredProcedure;
 
@@ -77,13 +80,13 @@ namespace Livestock_Tracking
             connection.Close();
         }
 
-        public void goatTrackingData() 
+        public void horseData()
         {
             connection = new SqlConnection(connectionString);
 
             connection.Open();
 
-            command = new SqlCommand("displayGoatTrackingData", connection);
+            command = new SqlCommand("horseData", connection);
 
             command.CommandType = CommandType.StoredProcedure;
 
@@ -98,10 +101,32 @@ namespace Livestock_Tracking
             connection.Close();
         }
 
+        public void sheepData()
+        {
+            connection = new SqlConnection(connectionString);
+
+            connection.Open();
+
+            command = new SqlCommand("sheepData", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            adapter = new SqlDataAdapter(command);
+
+            dataTable = new DataTable();
+
+            adapter.Fill(dataTable);
+
+            dgvTrackingData.DataSource = dataTable;
+
+            connection.Close();
+        }
+
+        // Methods to simulate and count the animals on the farm.
         public void simulateDroneFlightCows()
         {
             string path = @"..\..\Scripts\cow_counts.txt";
-            string text = File.ReadAllText(path);
+            string count = File.ReadAllText(path);
 
             // Specify the path to python.exe and your Python script
             string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
@@ -135,12 +160,12 @@ namespace Livestock_Tracking
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("simulateFlight", connection))
+                using (SqlCommand command = new SqlCommand("simulateCowFlight", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@animalCount", int.Parse(text));
-                    command.Parameters.AddWithValue("@dateTime", DateTime.Now);
+                    command.Parameters.AddWithValue("@animalCount", int.Parse(count));
+                    command.Parameters.AddWithValue("@date", DateTime.Now);
 
                     command.ExecuteNonQuery();
 
@@ -151,8 +176,8 @@ namespace Livestock_Tracking
 
         public void simulateDroneFlightHorses()
         {
-            string path = @"..\..\Scripts\sheep_counts.txt";
-            string text = File.ReadAllText(path);
+            string path = @"..\..\Scripts\horse_counts.txt";
+            string count = File.ReadAllText(path);
 
             // Specify the path to python.exe and your Python script
             string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
@@ -179,12 +204,27 @@ namespace Livestock_Tracking
 
             // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
+
+            // --------------------------------------------
+
+            connection = new SqlConnection(connectionString);
+
+            connection.Open();
+
+            command = new SqlCommand("simulateHorseFlight", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@animalCount", int.Parse(count));
+            command.Parameters.AddWithValue("@date", DateTime.Now);
+
+            command.ExecuteNonQuery();
         }
 
-        public void SimulateDroneFightSheep()
+        public void simulateDroneFightSheep()
         {
             string path = @"..\..\Scripts\sheep_counts.txt";
-            string text = File.ReadAllText(path);
+            string count = File.ReadAllText(path);
 
             // Specify the path to python.exe and your Python script
             string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
@@ -211,7 +251,20 @@ namespace Livestock_Tracking
 
             // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
+
+            connection = new SqlConnection(connectionString);
+
+            connection.Open();
+
+            command = new SqlCommand("simulateSheepFlight", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@animalCount", int.Parse(count));
+            command.Parameters.AddWithValue("@date", DateTime.Now);
+
+            command.ExecuteNonQuery();
         }
+
 
         public void dateList()
         {
@@ -266,24 +319,26 @@ namespace Livestock_Tracking
             connection.Close();
         }
 
-        private void btnViewAll_Click(object sender, EventArgs e)
-        {
-            cowTrackingData();
-        }
 
         private void btnCows_Click(object sender, EventArgs e)
         {
             simulateDroneFlightCows();
+
+            cowData();
         }
 
         private void btnSheep_Click(object sender, EventArgs e)
         {
-            SimulateDroneFightSheep();
+            simulateDroneFightSheep();
+
+            sheepData();
         }
 
         private void btnHorse_Click(object sender, EventArgs e)
         {
             simulateDroneFlightHorses();
+
+            horseData();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -553,6 +608,53 @@ namespace Livestock_Tracking
         private void btnThermal_Click(object sender, EventArgs e)
         {
             Thermal();
+        }
+
+        private void btnCows1_Click(object sender, EventArgs e)
+        {
+            cowData();
+
+            lblHeader.Text = "Cows";
+        }
+
+        private void btnHorses1_Click(object sender, EventArgs e)
+        {
+            horseData();
+
+            lblHeader.Text = "Horses";
+        }
+
+        private void btnSheep1_Click(object sender, EventArgs e)
+        {
+            sheepData();
+
+            lblHeader.Text = "Sheep";
+        }
+
+        private void btnOverall_Click(object sender, EventArgs e)
+        {
+            overallData();
+        }
+
+        private void dgvTrackingData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvTrackingData.Rows)
+            {
+                
+                if (row.Cells[4] != null && row.Cells[4].Value != null)
+                {
+                    if (row.Cells[4].Value.ToString() != "0")
+                    {
+                        row.Cells[4].Style.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        
+                        row.Cells[4].Style.BackColor = dgvTrackingData.DefaultCellStyle.BackColor;
+                    }
+                }
+            }
+
         }
     }
 }
