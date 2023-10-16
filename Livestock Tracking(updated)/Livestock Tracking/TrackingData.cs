@@ -448,7 +448,7 @@ namespace Livestock_Tracking
                     Arguments = pythonScript,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+                    WorkingDirectory = @"C:\Github Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
                 };
 
                 using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
@@ -480,7 +480,7 @@ namespace Livestock_Tracking
                     Arguments = pythonScript,
                     UseShellExecute = false,
                     CreateNoWindow = true,
-                    WorkingDirectory = @"E:\GitHub Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+                    WorkingDirectory = @"C:\Github Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
                 };
 
                 using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
@@ -656,6 +656,56 @@ namespace Livestock_Tracking
                 }
             }
 
+        }
+
+        private void btnWebCam_Click(object sender, EventArgs e)
+        {
+            string path = @"..\..\Scripts\people_counts.txt";
+            string count = File.ReadAllText(path);
+
+            // Specify the path to python.exe and your Python script
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
+            string scriptPath = @"..\Scripts\DroneCamera.py"; // Change to your Python script path
+
+            // Create a new process
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            // Start the process
+            process.Start();
+
+            // Read the output of the Python script (if needed)
+            string output = process.StandardOutput.ReadToEnd();
+
+            // Wait for the process to exit
+            process.WaitForExit();
+
+            // Display output (if needed)
+            MessageBox.Show("Python script executed:\n" + output);
+
+
+
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+
+            //    using (SqlCommand command = new SqlCommand("simulateCowFlight", connection))
+            //    {
+            //        command.CommandType = CommandType.StoredProcedure;
+
+            //        command.Parameters.AddWithValue("@animalCount", int.Parse(count));
+            //        command.Parameters.AddWithValue("@date", DateTime.Now);
+
+            //        command.ExecuteNonQuery();
+
+            //    }
+            //}
         }
     }
 }
