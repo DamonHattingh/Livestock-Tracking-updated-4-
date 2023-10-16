@@ -470,9 +470,10 @@ namespace Livestock_Tracking
         {
             try
             {
-                // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
+                //Specify the path to your Python interpreter(python.exe) and the path to your Python script(main2.py).
                 string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
+                string pythonScript = @"..\Scripts\mainArdu2.py"; // Update this path.
+
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
                 {
