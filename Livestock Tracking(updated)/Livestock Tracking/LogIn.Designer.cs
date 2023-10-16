@@ -67,10 +67,9 @@ namespace Livestock_Tracking
             this.lblLogin.AutoSize = true;
             this.lblLogin.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.ForeColor = System.Drawing.Color.Teal;
-            this.lblLogin.Location = new System.Drawing.Point(213, 64);
-            this.lblLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogin.Location = new System.Drawing.Point(160, 52);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(406, 39);
+            this.lblLogin.Size = new System.Drawing.Size(330, 32);
             this.lblLogin.TabIndex = 0;
             this.lblLogin.Text = "Livestock Tracking Login";
             this.lblLogin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -81,11 +80,10 @@ namespace Livestock_Tracking
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Silver;
-            this.txtUsername.Location = new System.Drawing.Point(173, 55);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsername.Location = new System.Drawing.Point(130, 45);
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(245, 27);
+            this.txtUsername.Size = new System.Drawing.Size(184, 22);
             this.txtUsername.TabIndex = 2;
             this.txtUsername.Text = "Username";
             this.txtUsername.Click += new System.EventHandler(this.txtUsername_Click);
@@ -96,10 +94,9 @@ namespace Livestock_Tracking
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.Teal;
-            this.lblUsername.Location = new System.Drawing.Point(227, 6);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsername.Location = new System.Drawing.Point(170, 5);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(108, 23);
+            this.lblUsername.Size = new System.Drawing.Size(88, 21);
             this.lblUsername.TabIndex = 3;
             this.lblUsername.Text = "Username";
             // 
@@ -108,10 +105,9 @@ namespace Livestock_Tracking
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.Teal;
-            this.lblPassword.Location = new System.Drawing.Point(227, 6);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPassword.Location = new System.Drawing.Point(170, 5);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(103, 23);
+            this.lblPassword.Size = new System.Drawing.Size(82, 21);
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Password";
             // 
@@ -124,10 +120,9 @@ namespace Livestock_Tracking
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.Location = new System.Drawing.Point(333, 425);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Location = new System.Drawing.Point(250, 345);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(157, 48);
+            this.btnLogin.Size = new System.Drawing.Size(118, 39);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -139,19 +134,19 @@ namespace Livestock_Tracking
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Location = new System.Drawing.Point(128, 143);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(96, 116);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(579, 135);
+            this.panel1.Size = new System.Drawing.Size(434, 110);
             this.panel1.TabIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(173, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(130, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 34);
+            this.pictureBox1.Size = new System.Drawing.Size(35, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -159,10 +154,10 @@ namespace Livestock_Tracking
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(173, 81);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(130, 66);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(245, 1);
+            this.panel2.Size = new System.Drawing.Size(184, 1);
             this.panel2.TabIndex = 7;
             // 
             // lblUserError
@@ -170,9 +165,10 @@ namespace Livestock_Tracking
             this.lblUserError.AutoSize = true;
             this.lblUserError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserError.ForeColor = System.Drawing.Color.Red;
-            this.lblUserError.Location = new System.Drawing.Point(187, 0);
+            this.lblUserError.Location = new System.Drawing.Point(140, 0);
+            this.lblUserError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUserError.Name = "lblUserError";
-            this.lblUserError.Size = new System.Drawing.Size(232, 17);
+            this.lblUserError.Size = new System.Drawing.Size(196, 16);
             this.lblUserError.TabIndex = 8;
             this.lblUserError.Text = "Invalid username. Please try again.";
             // 
@@ -183,19 +179,18 @@ namespace Livestock_Tracking
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.lblPassword);
             this.panel3.Controls.Add(this.txtPassword);
-            this.panel3.Location = new System.Drawing.Point(128, 282);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(96, 229);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(579, 135);
+            this.panel3.Size = new System.Drawing.Size(434, 110);
             this.panel3.TabIndex = 9;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.lblPassError);
-            this.panel6.Location = new System.Drawing.Point(0, 92);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Location = new System.Drawing.Point(0, 75);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(579, 43);
+            this.panel6.Size = new System.Drawing.Size(434, 35);
             this.panel6.TabIndex = 1;
             this.panel6.Visible = false;
             // 
@@ -204,19 +199,20 @@ namespace Livestock_Tracking
             this.lblPassError.AutoSize = true;
             this.lblPassError.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassError.ForeColor = System.Drawing.Color.Red;
-            this.lblPassError.Location = new System.Drawing.Point(188, 0);
+            this.lblPassError.Location = new System.Drawing.Point(141, 0);
+            this.lblPassError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassError.Name = "lblPassError";
-            this.lblPassError.Size = new System.Drawing.Size(231, 17);
+            this.lblPassError.Size = new System.Drawing.Size(195, 16);
             this.lblPassError.TabIndex = 8;
             this.lblPassError.Text = "Invalid password. Please try again.";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(173, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(130, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(47, 34);
+            this.pictureBox2.Size = new System.Drawing.Size(35, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
@@ -224,10 +220,10 @@ namespace Livestock_Tracking
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(173, 82);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(130, 67);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(245, 1);
+            this.panel4.Size = new System.Drawing.Size(184, 1);
             this.panel4.TabIndex = 7;
             // 
             // txtPassword
@@ -236,11 +232,10 @@ namespace Livestock_Tracking
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtPassword.Location = new System.Drawing.Point(173, 57);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Location = new System.Drawing.Point(130, 46);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(245, 27);
+            this.txtPassword.Size = new System.Drawing.Size(184, 22);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.Text = "Password";
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
@@ -250,20 +245,19 @@ namespace Livestock_Tracking
             // panel5
             // 
             this.panel5.Controls.Add(this.lblUserError);
-            this.panel5.Location = new System.Drawing.Point(128, 233);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(96, 189);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(579, 46);
+            this.panel5.Size = new System.Drawing.Size(434, 37);
             this.panel5.TabIndex = 0;
             this.panel5.Visible = false;
             // 
             // panel7
             // 
             this.panel7.Controls.Add(this.controlBox);
-            this.panel7.Location = new System.Drawing.Point(3, -1);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel7.Location = new System.Drawing.Point(2, -1);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(829, 37);
+            this.panel7.Size = new System.Drawing.Size(622, 30);
             this.panel7.TabIndex = 10;
             // 
             // controlBox
@@ -272,10 +266,10 @@ namespace Livestock_Tracking
             this.controlBox.Controls.Add(this.btnMinimise);
             this.controlBox.Controls.Add(this.btnClose);
             this.controlBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlBox.Location = new System.Drawing.Point(629, 0);
-            this.controlBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.controlBox.Location = new System.Drawing.Point(472, 0);
+            this.controlBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlBox.Name = "controlBox";
-            this.controlBox.Size = new System.Drawing.Size(200, 37);
+            this.controlBox.Size = new System.Drawing.Size(150, 30);
             this.controlBox.TabIndex = 0;
             // 
             // btnMinimise
@@ -284,10 +278,10 @@ namespace Livestock_Tracking
             this.btnMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimise.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMinimise.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimise.Image")));
-            this.btnMinimise.Location = new System.Drawing.Point(108, 4);
-            this.btnMinimise.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMinimise.Location = new System.Drawing.Point(81, 3);
+            this.btnMinimise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMinimise.Name = "btnMinimise";
-            this.btnMinimise.Size = new System.Drawing.Size(40, 28);
+            this.btnMinimise.Size = new System.Drawing.Size(30, 23);
             this.btnMinimise.TabIndex = 2;
             this.btnMinimise.UseVisualStyleBackColor = false;
             this.btnMinimise.Click += new System.EventHandler(this.btnMinimise_Click);
@@ -298,10 +292,10 @@ namespace Livestock_Tracking
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(155, 4);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Location = new System.Drawing.Point(116, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(37, 28);
+            this.btnClose.Size = new System.Drawing.Size(28, 23);
             this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -309,20 +303,20 @@ namespace Livestock_Tracking
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(725, 446);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(544, 362);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(95, 78);
+            this.pictureBox4.Size = new System.Drawing.Size(71, 63);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 11;
             this.pictureBox4.TabStop = false;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(832, 537);
+            this.ClientSize = new System.Drawing.Size(624, 436);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
@@ -331,7 +325,6 @@ namespace Livestock_Tracking
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Page";
