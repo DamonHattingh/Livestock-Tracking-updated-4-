@@ -434,6 +434,37 @@ namespace Livestock_Tracking
             }
         }
 
+        //private void btnEvening_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
+        //        string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
+        //        string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
+
+        //        ProcessStartInfo pythonStartInfo = new ProcessStartInfo
+        //        {
+        //            FileName = pythonExecutable,
+        //            Arguments = pythonScript,
+        //            UseShellExecute = false,
+        //            CreateNoWindow = true,
+        //            WorkingDirectory = @"C:\Github Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
+        //        };
+
+        //        using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
+        //        {
+        //            pythonProcess.Start();
+        //            pythonProcess.WaitForExit();
+        //        }
+
+        //        // Optionally, you can display a message or perform other actions after script execution.
+        //        MessageBox.Show("Python script executed successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message);
+        //    }
+        //}
         private void btnEvening_Click(object sender, EventArgs e)
         {
             try
@@ -458,7 +489,7 @@ namespace Livestock_Tracking
                 }
 
                 // Optionally, you can display a message or perform other actions after script execution.
-                MessageBox.Show("Python script executed successfully.");
+                Console.WriteLine("Script successful");
             }
             catch (Exception ex)
             {
@@ -491,13 +522,15 @@ namespace Livestock_Tracking
                 }
 
                 // Optionally, you can display a message or perform other actions after script execution.
-                MessageBox.Show("Python script executed successfully.");
+                Console.WriteLine("script successful");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+
 
         public void Thermal()
         {
