@@ -23,7 +23,6 @@ namespace Livestock_Tracking
 {
     public partial class TrackingData : Form
     {
-        //hello
 
         string connectionString = "Server=localhost;Database=EastwoodFarm_database;Integrated Security=True;";
         SqlConnection connection;
@@ -123,17 +122,14 @@ namespace Livestock_Tracking
             connection.Close();
         }
 
-        // Methods to simulate and count the animals on the farm.
         public void simulateDroneFlightCows()
         {
             string path = @"..\..\Scripts\cow_counts.txt";
             string count = File.ReadAllText(path);
 
-            // Specify the path to python.exe and your Python script
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
-            string scriptPath = @"..\Scripts\main.py"; // Change to your Python script path
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\main.py"; 
 
-            // Create a new process
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
             process.StartInfo.Arguments = scriptPath;
@@ -143,16 +139,12 @@ namespace Livestock_Tracking
 
             process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
-            // Start the process
             process.Start();
 
-            // Read the output of the Python script (if needed)
             string output = process.StandardOutput.ReadToEnd();
 
-            // Wait for the process to exit
             process.WaitForExit();
 
-            // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
         
 
@@ -180,11 +172,9 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\horse_counts.txt";
             string count = File.ReadAllText(path);
 
-            // Specify the path to python.exe and your Python script
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
-            string scriptPath = @"..\Scripts\Horses.py"; // Change to your Python script path
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\Horses.py"; 
 
-            // Create a new process
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
             process.StartInfo.Arguments = scriptPath;
@@ -194,13 +184,10 @@ namespace Livestock_Tracking
 
             process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
-            // Start the process
             process.Start();
 
-            // Read the output of the Python script (if needed)
             string output = process.StandardOutput.ReadToEnd();
 
-            // Wait for the process to exit
             process.WaitForExit();
 
             // Display output (if needed)
@@ -227,11 +214,9 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\sheep_counts.txt";
             string count = File.ReadAllText(path);
 
-            // Specify the path to python.exe and your Python script
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
-            string scriptPath = @"..\Scripts\Sheep.py"; // Change to your Python script path
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe";
+            string scriptPath = @"..\Scripts\Sheep.py"; 
 
-            // Create a new process
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
             process.StartInfo.Arguments = scriptPath;
@@ -241,16 +226,12 @@ namespace Livestock_Tracking
 
             process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
-            // Start the process
             process.Start();
 
-            // Read the output of the Python script (if needed)
             string output = process.StandardOutput.ReadToEnd();
 
-            // Wait for the process to exit
             process.WaitForExit();
 
-            // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
 
             connection = new SqlConnection(connectionString);
@@ -367,15 +348,14 @@ namespace Livestock_Tracking
             try
             {
                 Console.WriteLine("Launching ArduPilot...");
-                // Specify the path to the Cygwin64 executable (mintty.exe) and any desired command or arguments.
-                string cygwinExecutable = @"C:\cygwin64\bin\mintty.exe"; // Update the path accordingly
+                string cygwinExecutable = @"C:\cygwin64\bin\mintty.exe"; 
                 string commands = "cd /cygdrive/e/ardupilot/ArduCopter && ../Tools/autotest/sim_vehicle.py --map --console";
 
                 ProcessStartInfo cygwinStartInfo = new ProcessStartInfo
                 {
                     FileName = cygwinExecutable,
-                    Arguments = $"-e /bin/bash -l -c \"{commands} 2>&1\"", // Add 2>&1 to redirect both stdout and stderr
-                    WorkingDirectory = "C:\\cygwin64\\bin", // Set the working directory if needed
+                    Arguments = $"-e /bin/bash -l -c \"{commands} 2>&1\"", 
+                    WorkingDirectory = "C:\\cygwin64\\bin", 
                     UseShellExecute = false,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
@@ -391,16 +371,14 @@ namespace Livestock_Tracking
 
                 cygwinProcess.Start();
 
-                // Wait for the first part (Cygwin) to complete
                 await Task.Run(() => cygwinProcess.WaitForExit());
 
-                // Now, start the second part (cmd)
                 ProcessStartInfo cmdStartInfo = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
-                    RedirectStandardError = true, // Redirect standard error as well
+                    RedirectStandardError = true, 
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
@@ -416,62 +394,29 @@ namespace Livestock_Tracking
                 StreamWriter sw = cmdProcess.StandardInput;
                 StreamReader sr = cmdProcess.StandardOutput;
 
-                //// Change the drive to E:
-                //sw.WriteLine("E:");
+                // Change the drive to E:
+                sw.WriteLine("E:");
 
-                //// Run the specified command
-                //sw.WriteLine(@"E:\ardupilot\Tools\autotest\fg_quad_view.bat 2>&1"); // Add 2>&1 here as well
+                sw.WriteLine(@"E:\ardupilot\Tools\autotest\fg_quad_view.bat 2>&1");
 
-                //// Close the input stream and wait for the second part (cmd) to complete
-                //sw.Close();
-                //await Task.Run(() => cmdProcess.WaitForExit());
+                // Close the input stream and wait for the second part (cmd) to complete
+                sw.Close();
+                await Task.Run(() => cmdProcess.WaitForExit());
 
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that may occur
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        //private void btnEvening_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
-        //        string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
-        //        string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
-
-        //        ProcessStartInfo pythonStartInfo = new ProcessStartInfo
-        //        {
-        //            FileName = pythonExecutable,
-        //            Arguments = pythonScript,
-        //            UseShellExecute = false,
-        //            CreateNoWindow = true,
-        //            WorkingDirectory = @"C:\Github Repos\Livestock-Tracking-updated-4-\Livestock Tracking(updated)\Livestock Tracking\Scripts", // Set this to the correct working directory.
-        //        };
-
-        //        using (Process pythonProcess = new Process { StartInfo = pythonStartInfo })
-        //        {
-        //            pythonProcess.Start();
-        //            pythonProcess.WaitForExit();
-        //        }
-
-        //        // Optionally, you can display a message or perform other actions after script execution.
-        //        MessageBox.Show("Python script executed successfully.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error: " + ex.Message);
-        //    }
-        //}
+        
         private void btnEvening_Click(object sender, EventArgs e)
         {
             try
             {
-                // Specify the path to your Python interpreter (python.exe) and the path to your Python script (main2.py).
-                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"..\Scripts\mainArdu.py"; // Update this path.
+                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; 
+                string pythonScript = @"..\Scripts\mainArdu.py"; 
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
                 {
@@ -488,7 +433,6 @@ namespace Livestock_Tracking
                     pythonProcess.WaitForExit();
                 }
 
-                // Optionally, you can display a message or perform other actions after script execution.
                 Console.WriteLine("Script successful");
             }
             catch (Exception ex)
@@ -501,9 +445,8 @@ namespace Livestock_Tracking
         {
             try
             {
-                //Specify the path to your Python interpreter(python.exe) and the path to your Python script(main2.py).
-                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; // Update this path.
-                string pythonScript = @"..\Scripts\mainArdu2.py"; // Update this path.
+                string pythonExecutable = @"..\..\Scripts\venv\Scripts\python.exe"; 
+                string pythonScript = @"..\Scripts\mainArdu2.py"; 
 
 
                 ProcessStartInfo pythonStartInfo = new ProcessStartInfo
@@ -521,7 +464,6 @@ namespace Livestock_Tracking
                     pythonProcess.WaitForExit();
                 }
 
-                // Optionally, you can display a message or perform other actions after script execution.
                 Console.WriteLine("script successful");
             }
             catch (Exception ex)
@@ -537,11 +479,9 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\temperature.txt";
             string text = File.ReadAllText(path);
 
-            // Specify the path to python.exe and your Python script
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
-            string scriptPath = @"..\Scripts\Thermal.py"; // Change to your Python script path
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\Thermal.py"; 
 
-            // Create a new process
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
             process.StartInfo.Arguments = scriptPath;
@@ -551,16 +491,13 @@ namespace Livestock_Tracking
 
             process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
-            // Start the process
+            
             process.Start();
 
-            // Read the output of the Python script (if needed)
             string output = process.StandardOutput.ReadToEnd();
 
-            // Wait for the process to exit
             process.WaitForExit();
 
-            // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
         }
 
@@ -570,11 +507,9 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\tiger_counts.txt";
             string text = File.ReadAllText(path);
 
-            // Specify the path to python.exe and your Python script
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
-            string scriptPath = @"..\Scripts\Tigers.py"; // Change to your Python script path
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\Tigers.py"; 
 
-            // Create a new process
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
             process.StartInfo.Arguments = scriptPath;
@@ -584,16 +519,12 @@ namespace Livestock_Tracking
 
             process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
-            // Start the process
             process.Start();
 
-            // Read the output of the Python script (if needed)
             string output = process.StandardOutput.ReadToEnd();
 
-            // Wait for the process to exit
             process.WaitForExit();
 
-            // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
 
 
@@ -616,24 +547,6 @@ namespace Livestock_Tracking
 
         }
 
-        private void SendCommandsToMavProxy(string[] commands)
-        {
-            Process[] processes = Process.GetProcessesByName("mavproxy");
-
-            foreach (Process process in processes)
-            {
-                if (!string.IsNullOrWhiteSpace(process.MainWindowTitle) && process.MainWindowTitle.Contains("C:\\Program Files (x86)\\MAVProxy\\mavproxy.exe"))
-                {
-                    StreamWriter sw = process.StandardInput;
-                    foreach (string command in commands)
-                    {
-                        Debug.WriteLine($"Sending command: {command}");
-                        sw.WriteLine(command);
-                    }
-                    sw.Close();
-                }
-            }
-        }
 
         private void btnTiger_Click(object sender, EventArgs e)
         {
@@ -697,11 +610,9 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\people_counts.txt";
             string count = File.ReadAllText(path);
 
-            // Specify the path to python.exe and your Python script
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; // Change to your Python interpreter path
-            string scriptPath = @"..\Scripts\DroneCamera.py"; // Change to your Python script path
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\DroneCamera.py"; 
 
-            // Create a new process
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
             process.StartInfo.Arguments = scriptPath;
@@ -711,35 +622,17 @@ namespace Livestock_Tracking
 
             process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
-            // Start the process
             process.Start();
 
-            // Read the output of the Python script (if needed)
             string output = process.StandardOutput.ReadToEnd();
 
-            // Wait for the process to exit
             process.WaitForExit();
 
-            // Display output (if needed)
             MessageBox.Show("Python script executed:\n" + output);
 
 
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    connection.Open();
-
-            //    using (SqlCommand command = new SqlCommand("simulateCowFlight", connection))
-            //    {
-            //        command.CommandType = CommandType.StoredProcedure;
-
-            //        command.Parameters.AddWithValue("@animalCount", int.Parse(count));
-            //        command.Parameters.AddWithValue("@date", DateTime.Now);
-
-            //        command.ExecuteNonQuery();
-
-            //    }
-            //}
+            
         }
     }
 }
