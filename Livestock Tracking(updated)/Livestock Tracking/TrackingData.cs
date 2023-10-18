@@ -343,6 +343,7 @@ namespace Livestock_Tracking
             loginForm.Show();
         }
 
+        //this method is for launching the ardu pilot application:
         private async void btnLaunch_Click(object sender, EventArgs e)
         {
             try
@@ -399,7 +400,6 @@ namespace Livestock_Tracking
 
                 sw.WriteLine(@"E:\ardupilot\Tools\autotest\fg_quad_view.bat 2>&1");
 
-                // Close the input stream and wait for the second part (cmd) to complete
                 sw.Close();
                 await Task.Run(() => cmdProcess.WaitForExit());
 
