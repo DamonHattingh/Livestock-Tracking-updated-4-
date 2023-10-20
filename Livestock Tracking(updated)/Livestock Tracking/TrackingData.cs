@@ -529,21 +529,7 @@ namespace Livestock_Tracking
 
 
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("simulateFlight", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("@animalCount", int.Parse(text));
-                    command.Parameters.AddWithValue("@dateTime", DateTime.Now);
-
-                    command.ExecuteNonQuery();
-
-                }
-            }
+            
 
         }
 
