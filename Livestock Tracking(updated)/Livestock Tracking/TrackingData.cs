@@ -560,8 +560,104 @@ namespace Livestock_Tracking
         }
 
 
+<<<<<<< HEAD
         // Methods for navigating to different pages on the form to see specific animal data. 
         private void btnOverallNav_Click(object sender, EventArgs e)
+=======
+
+        public void Thermal()
+        {
+            string path = @"..\..\Scripts\temperature.txt";
+            string text = File.ReadAllText(path);
+
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\Thermal.py"; 
+
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+
+            process.WaitForExit();
+
+            MessageBox.Show("Python script executed:\n" + output);
+        }
+
+
+        public void simulateDroneFlightTigers()
+        {
+            string path = @"..\..\Scripts\tiger_counts.txt";
+            string text = File.ReadAllText(path);
+
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string scriptPath = @"..\Scripts\Tigers.py"; 
+
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+
+            process.WaitForExit();
+
+            MessageBox.Show("Python script executed:\n" + output);
+
+
+
+            
+
+        }
+
+
+        private void btnTiger_Click(object sender, EventArgs e)
+        {
+            simulateDroneFlightTigers();
+        }
+
+        private void btnThermal_Click(object sender, EventArgs e)
+        {
+            Thermal();
+        }
+
+        private void btnCows1_Click(object sender, EventArgs e)
+        {
+            cowData();
+
+            lblHeader.Text = "Cows";
+        }
+
+        private void btnHorses1_Click(object sender, EventArgs e)
+        {
+            horseData();
+
+            lblHeader.Text = "Horses";
+        }
+
+        private void btnSheep1_Click(object sender, EventArgs e)
+        {
+            sheepData();
+
+            lblHeader.Text = "Sheep";
+        }
+
+        private void btnOverall_Click(object sender, EventArgs e)
+>>>>>>> c93c5090e0ee9a2f9dd4bed6ea110bc4b1be40c1
         {
             overallData();
         }
