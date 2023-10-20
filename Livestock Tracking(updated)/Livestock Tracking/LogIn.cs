@@ -17,23 +17,19 @@ namespace Livestock_Tracking
     {
         private Dictionary<string, string> userCredentials;
         
+        // Method for user credentials.
         public Login()
         {
             InitializeComponent();
             userCredentials = new Dictionary<string, string>
             {
-                { "Thia", "Thia272" },
-                { "user2", "password2" },
-                {"admin", "pass" }
-                // Add more user credentials as needed
+                {"admin", "pass" },
+                // { "name", "password" }
+                // Add more users if needed. 
             };
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        // Event to log in to the main tracking form, after user credentials are verified.
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
@@ -73,14 +69,17 @@ namespace Livestock_Tracking
 
         }
 
+
+        // Events for formatting of textboxes when user is interactive with the form.
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 txtUsername.ForeColor = Color.Black;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show("Error: " + ex);
             }
         }
 
@@ -90,9 +89,9 @@ namespace Livestock_Tracking
             {
                 txtPassword.ForeColor = Color.Black;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Error: " + ex);
             }
         }
 
@@ -111,16 +110,14 @@ namespace Livestock_Tracking
             txtPassword.PasswordChar = '*';
         }
 
+
+        // Event for minimizing the form.
         private void btnMinimise_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
-        private void btnMaximise_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Maximized;
-        }
-
+        // Event for closing the form.
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();

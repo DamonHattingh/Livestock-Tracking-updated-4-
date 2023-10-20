@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackingData));
-            this.cbDatesList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCows = new System.Windows.Forms.Button();
             this.btnHorse = new System.Windows.Forms.Button();
@@ -40,12 +39,11 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.dgvTrackingData = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLaunch2 = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnSheep1 = new System.Windows.Forms.Button();
-            this.btnHorses1 = new System.Windows.Forms.Button();
-            this.btnCows1 = new System.Windows.Forms.Button();
-            this.btnOverall = new System.Windows.Forms.Button();
+            this.btnSheepNav = new System.Windows.Forms.Button();
+            this.btnHorsesNav = new System.Windows.Forms.Button();
+            this.btnCowsNav = new System.Windows.Forms.Button();
+            this.btnOverallNav = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMorning = new System.Windows.Forms.Button();
             this.btnEvening = new System.Windows.Forms.Button();
@@ -54,6 +52,8 @@
             this.btnThermal = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.btnWebCam = new System.Windows.Forms.Button();
+            this.cbDatesList = new System.Windows.Forms.ComboBox();
+            this.btnSearchClear = new System.Windows.Forms.Button();
             this.panel7.SuspendLayout();
             this.controlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrackingData)).BeginInit();
@@ -61,37 +61,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbDatesList
-            // 
-            this.cbDatesList.ForeColor = System.Drawing.Color.Black;
-            this.cbDatesList.FormattingEnabled = true;
-            this.cbDatesList.Location = new System.Drawing.Point(384, 366);
-            this.cbDatesList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbDatesList.Name = "cbDatesList";
-            this.cbDatesList.Size = new System.Drawing.Size(140, 21);
-            this.cbDatesList.TabIndex = 8;
-            this.cbDatesList.SelectedIndexChanged += new System.EventHandler(this.cbDatesList_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(380, 344);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(323, 417);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 20);
+            this.label1.Size = new System.Drawing.Size(144, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Search by date";
             // 
             // btnCows
             // 
             this.btnCows.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnCows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCows.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnCows.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnCows.Location = new System.Drawing.Point(775, 375);
-            this.btnCows.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCows.Location = new System.Drawing.Point(1033, 462);
+            this.btnCows.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCows.Name = "btnCows";
-            this.btnCows.Size = new System.Drawing.Size(86, 30);
+            this.btnCows.Size = new System.Drawing.Size(115, 37);
             this.btnCows.TabIndex = 11;
             this.btnCows.Text = "Cows";
             this.btnCows.UseVisualStyleBackColor = false;
@@ -100,12 +89,13 @@
             // btnHorse
             // 
             this.btnHorse.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnHorse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHorse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnHorse.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnHorse.Location = new System.Drawing.Point(684, 375);
-            this.btnHorse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHorse.Location = new System.Drawing.Point(912, 462);
+            this.btnHorse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHorse.Name = "btnHorse";
-            this.btnHorse.Size = new System.Drawing.Size(86, 30);
+            this.btnHorse.Size = new System.Drawing.Size(115, 37);
             this.btnHorse.TabIndex = 12;
             this.btnHorse.Text = "Horses";
             this.btnHorse.UseVisualStyleBackColor = false;
@@ -114,12 +104,13 @@
             // btnSheep
             // 
             this.btnSheep.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnSheep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSheep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSheep.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnSheep.Location = new System.Drawing.Point(593, 375);
-            this.btnSheep.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSheep.Location = new System.Drawing.Point(791, 462);
+            this.btnSheep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSheep.Name = "btnSheep";
-            this.btnSheep.Size = new System.Drawing.Size(86, 30);
+            this.btnSheep.Size = new System.Drawing.Size(115, 37);
             this.btnSheep.TabIndex = 13;
             this.btnSheep.Text = "Sheeps";
             this.btnSheep.UseVisualStyleBackColor = false;
@@ -129,9 +120,9 @@
             // 
             this.panel7.Controls.Add(this.controlBox);
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(900, 30);
+            this.panel7.Size = new System.Drawing.Size(1200, 37);
             this.panel7.TabIndex = 14;
             // 
             // controlBox
@@ -140,10 +131,10 @@
             this.controlBox.Controls.Add(this.btnMinimise);
             this.controlBox.Controls.Add(this.btnClose);
             this.controlBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.controlBox.Location = new System.Drawing.Point(750, 0);
-            this.controlBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlBox.Location = new System.Drawing.Point(1000, 0);
+            this.controlBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.controlBox.Name = "controlBox";
-            this.controlBox.Size = new System.Drawing.Size(150, 30);
+            this.controlBox.Size = new System.Drawing.Size(200, 37);
             this.controlBox.TabIndex = 0;
             // 
             // btnMinimise
@@ -152,12 +143,13 @@
             this.btnMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimise.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMinimise.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimise.Image")));
-            this.btnMinimise.Location = new System.Drawing.Point(81, 3);
-            this.btnMinimise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMinimise.Location = new System.Drawing.Point(108, 4);
+            this.btnMinimise.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimise.Name = "btnMinimise";
-            this.btnMinimise.Size = new System.Drawing.Size(30, 23);
+            this.btnMinimise.Size = new System.Drawing.Size(40, 28);
             this.btnMinimise.TabIndex = 2;
             this.btnMinimise.UseVisualStyleBackColor = false;
+            this.btnMinimise.Click += new System.EventHandler(this.btnMinimise_Click);
             // 
             // btnClose
             // 
@@ -165,10 +157,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(116, 3);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(155, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(28, 23);
+            this.btnClose.Size = new System.Drawing.Size(37, 28);
             this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -179,42 +171,29 @@
             this.dgvTrackingData.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgvTrackingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrackingData.GridColor = System.Drawing.Color.Teal;
-            this.dgvTrackingData.Location = new System.Drawing.Point(246, 89);
-            this.dgvTrackingData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvTrackingData.Location = new System.Drawing.Point(328, 110);
+            this.dgvTrackingData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTrackingData.Name = "dgvTrackingData";
             this.dgvTrackingData.RowHeadersWidth = 51;
             this.dgvTrackingData.RowTemplate.Height = 24;
-            this.dgvTrackingData.Size = new System.Drawing.Size(615, 216);
+            this.dgvTrackingData.Size = new System.Drawing.Size(820, 266);
             this.dgvTrackingData.TabIndex = 0;
             this.dgvTrackingData.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTrackingData_CellFormatting);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.btnLaunch2);
             this.panel1.Controls.Add(this.btnLogout);
-            this.panel1.Controls.Add(this.btnSheep1);
-            this.panel1.Controls.Add(this.btnHorses1);
-            this.panel1.Controls.Add(this.btnCows1);
-            this.panel1.Controls.Add(this.btnOverall);
+            this.panel1.Controls.Add(this.btnSheepNav);
+            this.panel1.Controls.Add(this.btnHorsesNav);
+            this.panel1.Controls.Add(this.btnCowsNav);
+            this.panel1.Controls.Add(this.btnOverallNav);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 466);
+            this.panel1.Size = new System.Drawing.Size(273, 574);
             this.panel1.TabIndex = 15;
-            // 
-            // btnLaunch2
-            // 
-            this.btnLaunch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLaunch2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLaunch2.Location = new System.Drawing.Point(-2, 335);
-            this.btnLaunch2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnLaunch2.Name = "btnLaunch2";
-            this.btnLaunch2.Size = new System.Drawing.Size(205, 34);
-            this.btnLaunch2.TabIndex = 21;
-            this.btnLaunch2.Text = "Launch";
-            this.btnLaunch2.UseVisualStyleBackColor = true;
             // 
             // btnLogout
             // 
@@ -222,74 +201,74 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(0, 414);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Location = new System.Drawing.Point(0, 510);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(205, 34);
+            this.btnLogout.Size = new System.Drawing.Size(273, 42);
             this.btnLogout.TabIndex = 20;
             this.btnLogout.Text = "Log Out";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // btnSheep1
+            // btnSheepNav
             // 
-            this.btnSheep1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSheep1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSheep1.Location = new System.Drawing.Point(0, 297);
-            this.btnSheep1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSheep1.Name = "btnSheep1";
-            this.btnSheep1.Size = new System.Drawing.Size(205, 34);
-            this.btnSheep1.TabIndex = 19;
-            this.btnSheep1.Text = "Sheep";
-            this.btnSheep1.UseVisualStyleBackColor = true;
-            this.btnSheep1.Click += new System.EventHandler(this.btnSheep1_Click);
+            this.btnSheepNav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSheepNav.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSheepNav.Location = new System.Drawing.Point(0, 366);
+            this.btnSheepNav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSheepNav.Name = "btnSheepNav";
+            this.btnSheepNav.Size = new System.Drawing.Size(273, 42);
+            this.btnSheepNav.TabIndex = 19;
+            this.btnSheepNav.Text = "Sheep";
+            this.btnSheepNav.UseVisualStyleBackColor = true;
+            this.btnSheepNav.Click += new System.EventHandler(this.btnSheepNav_Click);
             // 
-            // btnHorses1
+            // btnHorsesNav
             // 
-            this.btnHorses1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHorses1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHorses1.Location = new System.Drawing.Point(0, 258);
-            this.btnHorses1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnHorses1.Name = "btnHorses1";
-            this.btnHorses1.Size = new System.Drawing.Size(205, 34);
-            this.btnHorses1.TabIndex = 18;
-            this.btnHorses1.Text = "Horses";
-            this.btnHorses1.UseVisualStyleBackColor = true;
-            this.btnHorses1.Click += new System.EventHandler(this.btnHorses1_Click);
+            this.btnHorsesNav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHorsesNav.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHorsesNav.Location = new System.Drawing.Point(0, 318);
+            this.btnHorsesNav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHorsesNav.Name = "btnHorsesNav";
+            this.btnHorsesNav.Size = new System.Drawing.Size(273, 42);
+            this.btnHorsesNav.TabIndex = 18;
+            this.btnHorsesNav.Text = "Horses";
+            this.btnHorsesNav.UseVisualStyleBackColor = true;
+            this.btnHorsesNav.Click += new System.EventHandler(this.btnHorsesNav_Click);
             // 
-            // btnCows1
+            // btnCowsNav
             // 
-            this.btnCows1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCows1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCows1.Location = new System.Drawing.Point(0, 219);
-            this.btnCows1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnCows1.Name = "btnCows1";
-            this.btnCows1.Size = new System.Drawing.Size(205, 34);
-            this.btnCows1.TabIndex = 17;
-            this.btnCows1.Text = "Cows";
-            this.btnCows1.UseVisualStyleBackColor = true;
-            this.btnCows1.Click += new System.EventHandler(this.btnCows1_Click);
+            this.btnCowsNav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCowsNav.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCowsNav.Location = new System.Drawing.Point(0, 270);
+            this.btnCowsNav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCowsNav.Name = "btnCowsNav";
+            this.btnCowsNav.Size = new System.Drawing.Size(273, 42);
+            this.btnCowsNav.TabIndex = 17;
+            this.btnCowsNav.Text = "Cows";
+            this.btnCowsNav.UseVisualStyleBackColor = true;
+            this.btnCowsNav.Click += new System.EventHandler(this.btnCowsNav_Click);
             // 
-            // btnOverall
+            // btnOverallNav
             // 
-            this.btnOverall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOverall.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOverall.Location = new System.Drawing.Point(0, 180);
-            this.btnOverall.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnOverall.Name = "btnOverall";
-            this.btnOverall.Size = new System.Drawing.Size(205, 34);
-            this.btnOverall.TabIndex = 16;
-            this.btnOverall.Text = "Overall";
-            this.btnOverall.UseVisualStyleBackColor = true;
-            this.btnOverall.Click += new System.EventHandler(this.btnOverall_Click);
+            this.btnOverallNav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOverallNav.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOverallNav.Location = new System.Drawing.Point(0, 222);
+            this.btnOverallNav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOverallNav.Name = "btnOverallNav";
+            this.btnOverallNav.Size = new System.Drawing.Size(273, 42);
+            this.btnOverallNav.TabIndex = 16;
+            this.btnOverallNav.Text = "Overall";
+            this.btnOverallNav.UseVisualStyleBackColor = true;
+            this.btnOverallNav.Click += new System.EventHandler(this.btnOverallNav_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(42, 17);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(56, 21);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 136);
+            this.pictureBox1.Size = new System.Drawing.Size(167, 167);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
@@ -297,12 +276,13 @@
             // btnMorning
             // 
             this.btnMorning.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnMorning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnMorning.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnMorning.Location = new System.Drawing.Point(593, 334);
-            this.btnMorning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMorning.Location = new System.Drawing.Point(791, 411);
+            this.btnMorning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMorning.Name = "btnMorning";
-            this.btnMorning.Size = new System.Drawing.Size(86, 30);
+            this.btnMorning.Size = new System.Drawing.Size(115, 37);
             this.btnMorning.TabIndex = 16;
             this.btnMorning.Text = "Morning";
             this.btnMorning.UseVisualStyleBackColor = false;
@@ -311,12 +291,13 @@
             // btnEvening
             // 
             this.btnEvening.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnEvening.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnEvening.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnEvening.Location = new System.Drawing.Point(684, 334);
-            this.btnEvening.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEvening.Location = new System.Drawing.Point(912, 411);
+            this.btnEvening.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEvening.Name = "btnEvening";
-            this.btnEvening.Size = new System.Drawing.Size(86, 30);
+            this.btnEvening.Size = new System.Drawing.Size(115, 37);
             this.btnEvening.TabIndex = 17;
             this.btnEvening.Text = "Evening";
             this.btnEvening.UseVisualStyleBackColor = false;
@@ -325,12 +306,13 @@
             // btnLaunch
             // 
             this.btnLaunch.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnLaunch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLaunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnLaunch.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnLaunch.Location = new System.Drawing.Point(775, 334);
-            this.btnLaunch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLaunch.Location = new System.Drawing.Point(1033, 411);
+            this.btnLaunch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLaunch.Name = "btnLaunch";
-            this.btnLaunch.Size = new System.Drawing.Size(86, 30);
+            this.btnLaunch.Size = new System.Drawing.Size(115, 37);
             this.btnLaunch.TabIndex = 18;
             this.btnLaunch.Text = "Launch";
             this.btnLaunch.UseVisualStyleBackColor = false;
@@ -339,12 +321,13 @@
             // btnTiger
             // 
             this.btnTiger.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnTiger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTiger.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnTiger.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnTiger.Location = new System.Drawing.Point(593, 409);
-            this.btnTiger.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTiger.Location = new System.Drawing.Point(791, 503);
+            this.btnTiger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTiger.Name = "btnTiger";
-            this.btnTiger.Size = new System.Drawing.Size(86, 30);
+            this.btnTiger.Size = new System.Drawing.Size(115, 37);
             this.btnTiger.TabIndex = 19;
             this.btnTiger.Text = "Tiger";
             this.btnTiger.UseVisualStyleBackColor = false;
@@ -353,12 +336,13 @@
             // btnThermal
             // 
             this.btnThermal.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnThermal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThermal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnThermal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnThermal.Location = new System.Drawing.Point(684, 409);
-            this.btnThermal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThermal.Location = new System.Drawing.Point(912, 503);
+            this.btnThermal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThermal.Name = "btnThermal";
-            this.btnThermal.Size = new System.Drawing.Size(86, 30);
+            this.btnThermal.Size = new System.Drawing.Size(115, 37);
             this.btnThermal.TabIndex = 20;
             this.btnThermal.Text = "Thermal";
             this.btnThermal.UseVisualStyleBackColor = false;
@@ -368,32 +352,58 @@
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold);
-            this.lblHeader.Location = new System.Drawing.Point(241, 41);
-            this.lblHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHeader.Location = new System.Drawing.Point(321, 50);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(294, 32);
+            this.lblHeader.Size = new System.Drawing.Size(360, 39);
             this.lblHeader.TabIndex = 21;
             this.lblHeader.Text = "Overall tracking data";
             // 
             // btnWebCam
             // 
             this.btnWebCam.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnWebCam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWebCam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnWebCam.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnWebCam.Location = new System.Drawing.Point(775, 409);
-            this.btnWebCam.Margin = new System.Windows.Forms.Padding(2);
+            this.btnWebCam.Location = new System.Drawing.Point(1033, 503);
+            this.btnWebCam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnWebCam.Name = "btnWebCam";
-            this.btnWebCam.Size = new System.Drawing.Size(86, 30);
+            this.btnWebCam.Size = new System.Drawing.Size(115, 37);
             this.btnWebCam.TabIndex = 22;
             this.btnWebCam.Text = "WebCam";
             this.btnWebCam.UseVisualStyleBackColor = false;
             this.btnWebCam.Click += new System.EventHandler(this.btnWebCam_Click);
             // 
+            // cbDatesList
+            // 
+            this.cbDatesList.ForeColor = System.Drawing.Color.Black;
+            this.cbDatesList.FormattingEnabled = true;
+            this.cbDatesList.Location = new System.Drawing.Point(328, 444);
+            this.cbDatesList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDatesList.Name = "cbDatesList";
+            this.cbDatesList.Size = new System.Drawing.Size(185, 24);
+            this.cbDatesList.TabIndex = 8;
+            this.cbDatesList.SelectedIndexChanged += new System.EventHandler(this.cbDatesList_SelectedIndexChanged);
+            // 
+            // btnSearchClear
+            // 
+            this.btnSearchClear.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnSearchClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnSearchClear.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSearchClear.Location = new System.Drawing.Point(328, 472);
+            this.btnSearchClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearchClear.Name = "btnSearchClear";
+            this.btnSearchClear.Size = new System.Drawing.Size(115, 37);
+            this.btnSearchClear.TabIndex = 23;
+            this.btnSearchClear.Text = "Clear";
+            this.btnSearchClear.UseVisualStyleBackColor = false;
+            this.btnSearchClear.Click += new System.EventHandler(this.btnSearchClear_Click);
+            // 
             // TrackingData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 466);
+            this.ClientSize = new System.Drawing.Size(1199, 574);
+            this.Controls.Add(this.btnSearchClear);
             this.Controls.Add(this.btnWebCam);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnThermal);
@@ -410,7 +420,7 @@
             this.Controls.Add(this.cbDatesList);
             this.Controls.Add(this.dgvTrackingData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TrackingData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TrackingData";
@@ -426,7 +436,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbDatesList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCows;
         private System.Windows.Forms.Button btnHorse;
@@ -438,18 +447,19 @@
         private System.Windows.Forms.DataGridView dgvTrackingData;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnSheep1;
-        private System.Windows.Forms.Button btnHorses1;
-        private System.Windows.Forms.Button btnCows1;
-        private System.Windows.Forms.Button btnOverall;
+        private System.Windows.Forms.Button btnSheepNav;
+        private System.Windows.Forms.Button btnHorsesNav;
+        private System.Windows.Forms.Button btnCowsNav;
+        private System.Windows.Forms.Button btnOverallNav;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnMorning;
         private System.Windows.Forms.Button btnEvening;
         private System.Windows.Forms.Button btnLaunch;
-        private System.Windows.Forms.Button btnLaunch2;
         private System.Windows.Forms.Button btnTiger;
         private System.Windows.Forms.Button btnThermal;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnWebCam;
+        private System.Windows.Forms.ComboBox cbDatesList;
+        private System.Windows.Forms.Button btnSearchClear;
     }
 }

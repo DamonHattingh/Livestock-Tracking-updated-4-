@@ -23,21 +23,27 @@ namespace Livestock_Tracking
 {
     public partial class TrackingData : Form
     {
-
         string connectionString = "Server=localhost;Database=EastwoodFarm_database;Integrated Security=True;";
         SqlConnection connection;
         SqlCommand command;
         SqlDataAdapter adapter;
         DataTable dataTable;
 
-        private void TrackingData_Load(object sender, EventArgs e)
+
+        public TrackingData()
         {
-            overallData();
-            // dateList();
+            InitializeComponent();
         }
 
 
-        // Methods to display data of all animals and specific animals in the data grid view.
+        private void TrackingData_Load(object sender, EventArgs e)
+        {
+            overallData();
+            dateList();
+        }
+
+
+        // Methods to collect data from the database and dispaly it in the data grid view. 
         public void overallData()
         {
             connection = new SqlConnection(connectionString);
@@ -57,6 +63,8 @@ namespace Livestock_Tracking
             dgvTrackingData.DataSource = dataTable;
 
             connection.Close();
+
+            lblHeader.Text = "Overall tracking data";
         }
 
         public void cowData()
@@ -78,6 +86,8 @@ namespace Livestock_Tracking
             dgvTrackingData.DataSource = dataTable;
 
             connection.Close();
+
+            lblHeader.Text = "Cows";
         }
 
         public void horseData()
@@ -99,6 +109,8 @@ namespace Livestock_Tracking
             dgvTrackingData.DataSource = dataTable;
 
             connection.Close();
+
+            lblHeader.Text = "Horses";
         }
 
         public void sheepData()
@@ -120,18 +132,23 @@ namespace Livestock_Tracking
             dgvTrackingData.DataSource = dataTable;
 
             connection.Close();
+
+            lblHeader.Text = "Sheep";
         }
 
+
+
+        // Methods for running Python scripts for the drone simulation flights.
         public void simulateDroneFlightCows()
         {
             string path = @"..\..\Scripts\cow_counts.txt";
             string count = File.ReadAllText(path);
 
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string pythonExeFile = @"..\..\Scripts\venv\Scripts\python.exe"; 
             string scriptPath = @"..\Scripts\main.py"; 
 
             Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.FileName = pythonExeFile;
             process.StartInfo.Arguments = scriptPath;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -145,25 +162,20 @@ namespace Livestock_Tracking
 
             process.WaitForExit();
 
-            MessageBox.Show("Python script executed:\n" + output);
-        
+            // ------------------------------------------------
 
+            connection = new SqlConnection(connectionString);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+            connection.Open();
 
-                using (SqlCommand command = new SqlCommand("simulateCowFlight", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
+            command = new SqlCommand("simulateCowFlight", connection);
 
-                    command.Parameters.AddWithValue("@animalCount", int.Parse(count));
-                    command.Parameters.AddWithValue("@date", DateTime.Now);
+            command.CommandType = CommandType.StoredProcedure;
 
-                    command.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@animalCount", int.Parse(count));
+            command.Parameters.AddWithValue("@date", DateTime.Now);
 
-                }
-            }
+            command.ExecuteNonQuery();
 
         }
 
@@ -172,11 +184,11 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\horse_counts.txt";
             string count = File.ReadAllText(path);
 
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+            string pythonExeFile = @"..\..\Scripts\venv\Scripts\python.exe"; 
             string scriptPath = @"..\Scripts\Horses.py"; 
 
             Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.FileName = pythonExeFile;
             process.StartInfo.Arguments = scriptPath;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -190,10 +202,7 @@ namespace Livestock_Tracking
 
             process.WaitForExit();
 
-            // Display output (if needed)
-            MessageBox.Show("Python script executed:\n" + output);
-
-            // --------------------------------------------
+            // ------------------------------------------------
 
             connection = new SqlConnection(connectionString);
 
@@ -214,8 +223,99 @@ namespace Livestock_Tracking
             string path = @"..\..\Scripts\sheep_counts.txt";
             string count = File.ReadAllText(path);
 
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe";
+            string pythonExeFile = @"..\..\Scripts\venv\Scripts\python.exe";
             string scriptPath = @"..\Scripts\Sheep.py"; 
+
+            Process process = new Process();
+            process.StartInfo.FileName = pythonExeFile;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+
+            process.WaitForExit();
+
+            // ------------------------------------------------
+
+            connection = new SqlConnection(connectionString);
+
+            connection.Open();
+
+            command = new SqlCommand("simulateSheepFlight", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@animalCount", int.Parse(count));
+            command.Parameters.AddWithValue("@date", DateTime.Now);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void simulateDroneFlightTigers()
+        {
+            string path = @"..\..\Scripts\tiger_counts.txt";
+            string text = File.ReadAllText(path);
+
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe";
+            string scriptPath = @"..\Scripts\Tigers.py";
+
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+
+            process.WaitForExit();
+        }
+
+        public void Thermal()
+        {
+            string path = @"..\..\Scripts\temperature.txt";
+            string text = File.ReadAllText(path);
+
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe";
+            string scriptPath = @"..\Scripts\Thermal.py";
+
+            Process process = new Process();
+            process.StartInfo.FileName = pythonPath;
+            process.StartInfo.Arguments = scriptPath;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+
+            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+
+            process.Start();
+
+            string output = process.StandardOutput.ReadToEnd();
+
+            process.WaitForExit();
+
+            MessageBox.Show("Python script executed:\n" + output);
+        }
+
+
+        // Event for running live cam.
+        private void btnWebCam_Click(object sender, EventArgs e)
+        {
+            string path = @"..\..\Scripts\people_counts.txt";
+            string count = File.ReadAllText(path);
+
+            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe";
+            string scriptPath = @"..\Scripts\DroneCamera.py";
 
             Process process = new Process();
             process.StartInfo.FileName = pythonPath;
@@ -233,18 +333,6 @@ namespace Livestock_Tracking
             process.WaitForExit();
 
             MessageBox.Show("Python script executed:\n" + output);
-
-            connection = new SqlConnection(connectionString);
-
-            connection.Open();
-
-            command = new SqlCommand("simulateSheepFlight", connection);
-            command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@animalCount", int.Parse(count));
-            command.Parameters.AddWithValue("@date", DateTime.Now);
-
-            command.ExecuteNonQuery();
         }
 
 
@@ -254,26 +342,23 @@ namespace Livestock_Tracking
 
             connection.Open();
 
-            command = new SqlCommand("dateDisplayList", connection);
- 
+            command = new SqlCommand("displayAllDates", connection);
+
             command.CommandType = CommandType.StoredProcedure;
 
             SqlDataReader reader = command.ExecuteReader();
 
+            cbDatesList.Items.Clear();
+
             while (reader.Read())
             {
                 DateTime valueOfDate = reader.GetDateTime(0);
-                cbDatesList.Items.Add(valueOfDate.ToString("yyyy-MM-dd")); 
+                cbDatesList.Items.Add(valueOfDate.ToString("yyyy-MM-dd"));
             }
 
             reader.Close();
 
             connection.Close();
-        }
-
-        public TrackingData()
-        {
-            InitializeComponent();
         }
 
         private void cbDatesList_SelectedIndexChanged(object sender, EventArgs e)
@@ -284,11 +369,11 @@ namespace Livestock_Tracking
 
             connection.Open();
 
-            command = new SqlCommand("viewTrackingViaDate", connection);
+            command = new SqlCommand("displayByDate", connection);
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@listDate", selectedValue);
+            command.Parameters.AddWithValue("@selectedDate", selectedValue); ;
 
             adapter = new SqlDataAdapter(command);
 
@@ -301,7 +386,13 @@ namespace Livestock_Tracking
             connection.Close();
         }
 
+        private void btnSearchClear_Click(object sender, EventArgs e)
+        {
+            overallData();
+        }
 
+
+        // Runs the Python scripts methods, counts the animals on the footage and adds the count to the database.
         private void btnCows_Click(object sender, EventArgs e)
         {
             simulateDroneFlightCows();
@@ -323,27 +414,21 @@ namespace Livestock_Tracking
             horseData();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+
+        // Runs the Python scripts methods and detects any threats on the farm.
+        private void btnTiger_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            simulateDroneFlightTigers();
         }
 
-        private void btnMinimise_Click(object sender, EventArgs e)
+        // Runs the Python scripts methods, and detects the temperature of animals.
+        private void btnThermal_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            Thermal();
         }
 
-        
 
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            Login loginForm = new Login();
-            loginForm.Show();
-        }
-
-        //this method is for launching the ardu pilot application:
+        // This event is for launching the ardu pilot application.
         private async void btnLaunch_Click(object sender, EventArgs e)
         {
             try
@@ -410,7 +495,7 @@ namespace Livestock_Tracking
             }
         }
 
-        
+        // This event is for launching a evening flight.
         private void btnEvening_Click(object sender, EventArgs e)
         {
             try
@@ -441,6 +526,8 @@ namespace Livestock_Tracking
             }
         }
 
+
+        // This event is for launching a morning flight.
         private void btnMorning_Click(object sender, EventArgs e)
         {
             try
@@ -473,122 +560,56 @@ namespace Livestock_Tracking
         }
 
 
-
-        public void Thermal()
-        {
-            string path = @"..\..\Scripts\temperature.txt";
-            string text = File.ReadAllText(path);
-
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-            string scriptPath = @"..\Scripts\Thermal.py"; 
-
-            Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
-            process.StartInfo.Arguments = scriptPath;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
-
-            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-            
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-
-            process.WaitForExit();
-
-            MessageBox.Show("Python script executed:\n" + output);
-        }
-
-
-        public void simulateDroneFlightTigers()
-        {
-            string path = @"..\..\Scripts\tiger_counts.txt";
-            string text = File.ReadAllText(path);
-
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-            string scriptPath = @"..\Scripts\Tigers.py"; 
-
-            Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
-            process.StartInfo.Arguments = scriptPath;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
-
-            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-
-            process.WaitForExit();
-
-            MessageBox.Show("Python script executed:\n" + output);
-
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("simulateFlight", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("@animalCount", int.Parse(text));
-                    command.Parameters.AddWithValue("@dateTime", DateTime.Now);
-
-                    command.ExecuteNonQuery();
-
-                }
-            }
-
-        }
-
-
-        private void btnTiger_Click(object sender, EventArgs e)
-        {
-            simulateDroneFlightTigers();
-        }
-
-        private void btnThermal_Click(object sender, EventArgs e)
-        {
-            Thermal();
-        }
-
-        private void btnCows1_Click(object sender, EventArgs e)
-        {
-            cowData();
-
-            lblHeader.Text = "Cows";
-        }
-
-        private void btnHorses1_Click(object sender, EventArgs e)
-        {
-            horseData();
-
-            lblHeader.Text = "Horses";
-        }
-
-        private void btnSheep1_Click(object sender, EventArgs e)
-        {
-            sheepData();
-
-            lblHeader.Text = "Sheep";
-        }
-
-        private void btnOverall_Click(object sender, EventArgs e)
+        // Methods for navigating to different pages on the form to see specific animal data. 
+        private void btnOverallNav_Click(object sender, EventArgs e)
         {
             overallData();
         }
 
+        private void btnSheepNav_Click(object sender, EventArgs e)
+        {
+            sheepData();           
+        }
+
+        private void btnHorsesNav_Click(object sender, EventArgs e)
+        {
+            horseData();
+        }
+
+        private void btnCowsNav_Click(object sender, EventArgs e)
+        {
+            cowData();
+        }
+
+        // Event to log out of the main form and go back to the log in form.
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Login loginForm = new Login();
+            loginForm.Show();
+        }
+
+
+        // Event for minimizing the form. 
+        private void btnMinimise_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        // Event for closing the form.
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+        // Event for formatting "missing" column values RED if there are missing animals.
         private void dgvTrackingData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             foreach (DataGridViewRow row in dgvTrackingData.Rows)
             {
-                
+
                 if (row.Cells[4] != null && row.Cells[4].Value != null)
                 {
                     if (row.Cells[4].Value.ToString() != "0")
@@ -597,7 +618,7 @@ namespace Livestock_Tracking
                     }
                     else
                     {
-                        
+
                         row.Cells[4].Style.BackColor = dgvTrackingData.DefaultCellStyle.BackColor;
                     }
                 }
@@ -605,34 +626,7 @@ namespace Livestock_Tracking
 
         }
 
-        private void btnWebCam_Click(object sender, EventArgs e)
-        {
-            string path = @"..\..\Scripts\people_counts.txt";
-            string count = File.ReadAllText(path);
 
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-            string scriptPath = @"..\Scripts\DroneCamera.py"; 
-
-            Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
-            process.StartInfo.Arguments = scriptPath;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
-
-            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-
-            process.WaitForExit();
-
-            MessageBox.Show("Python script executed:\n" + output);
-
-
-
-            
-        }
+       
     }
 }
