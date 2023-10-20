@@ -304,7 +304,7 @@ namespace Livestock_Tracking
 
             process.WaitForExit();
 
-            MessageBox.Show("Python script executed:\n" + output);
+            
         }
 
 
@@ -560,80 +560,78 @@ namespace Livestock_Tracking
         }
 
 
-<<<<<<< HEAD
         // Methods for navigating to different pages on the form to see specific animal data. 
-        private void btnOverallNav_Click(object sender, EventArgs e)
-=======
+        //private void btnOverallNav_Click(object sender, EventArgs e)
 
-        public void Thermal()
-        {
-            string path = @"..\..\Scripts\temperature.txt";
-            string text = File.ReadAllText(path);
+        //public void Thermal()
+        //{
+        //    string path = @"..\..\Scripts\temperature.txt";
+        //    string text = File.ReadAllText(path);
 
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-            string scriptPath = @"..\Scripts\Thermal.py"; 
+        //    string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+        //    string scriptPath = @"..\Scripts\Thermal.py"; 
 
-            Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
-            process.StartInfo.Arguments = scriptPath;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
+        //    Process process = new Process();
+        //    process.StartInfo.FileName = pythonPath;
+        //    process.StartInfo.Arguments = scriptPath;
+        //    process.StartInfo.UseShellExecute = false;
+        //    process.StartInfo.RedirectStandardOutput = true;
+        //    process.StartInfo.CreateNoWindow = true;
 
-            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-            
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-
-            process.WaitForExit();
-
-            MessageBox.Show("Python script executed:\n" + output);
-        }
-
-
-        public void simulateDroneFlightTigers()
-        {
-            string path = @"..\..\Scripts\tiger_counts.txt";
-            string text = File.ReadAllText(path);
-
-            string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-            string scriptPath = @"..\Scripts\Tigers.py"; 
-
-            Process process = new Process();
-            process.StartInfo.FileName = pythonPath;
-            process.StartInfo.Arguments = scriptPath;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
-
-            process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-
-            process.WaitForExit();
-
-            MessageBox.Show("Python script executed:\n" + output);
-
-
+        //    process.StartInfo.WorkingDirectory = @"..\..\Scripts";
 
             
+        //    process.Start();
 
-        }
+        //    string output = process.StandardOutput.ReadToEnd();
+
+        //    process.WaitForExit();
+
+        //    MessageBox.Show("Python script executed:\n" + output);
+        //}
 
 
-        private void btnTiger_Click(object sender, EventArgs e)
-        {
-            simulateDroneFlightTigers();
-        }
+        //public void simulateDroneFlightTigers()
+        //{
+        //    string path = @"..\..\Scripts\tiger_counts.txt";
+        //    string text = File.ReadAllText(path);
 
-        private void btnThermal_Click(object sender, EventArgs e)
-        {
-            Thermal();
-        }
+        //    string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
+        //    string scriptPath = @"..\Scripts\Tigers.py"; 
+
+        //    Process process = new Process();
+        //    process.StartInfo.FileName = pythonPath;
+        //    process.StartInfo.Arguments = scriptPath;
+        //    process.StartInfo.UseShellExecute = false;
+        //    process.StartInfo.RedirectStandardOutput = true;
+        //    process.StartInfo.CreateNoWindow = true;
+
+        //    process.StartInfo.WorkingDirectory = @"..\..\Scripts";
+
+        //    process.Start();
+
+        //    string output = process.StandardOutput.ReadToEnd();
+
+        //    process.WaitForExit();
+
+        //    MessageBox.Show("Python script executed:\n" + output);
+
+
+
+            
+
+        //}
+
+
+        //private void btnTiger_Click(object sender, EventArgs e)
+        //{
+        //    simulateDroneFlightTigers();
+        //}
+
+        //private void btnThermal_Click(object sender, EventArgs e)
+        //{
+        //    Thermal();
+        //}
 
         private void btnCows1_Click(object sender, EventArgs e)
         {
@@ -656,11 +654,11 @@ namespace Livestock_Tracking
             lblHeader.Text = "Sheep";
         }
 
-        private void btnOverall_Click(object sender, EventArgs e)
->>>>>>> c93c5090e0ee9a2f9dd4bed6ea110bc4b1be40c1
+        private void btnOverallNav_Click(object sender, EventArgs e)
         {
             overallData();
         }
+
 
         private void btnSheepNav_Click(object sender, EventArgs e)
         {

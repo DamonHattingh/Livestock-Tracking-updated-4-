@@ -4,14 +4,14 @@ import numpy as np
 from twilio.rest import Client
 
 # Your Twilio Account SID and Auth Token
-account_sid = 'AC23b601fb4dbe7e1c1e5ead51dae7dba7'
-auth_token = '8ea6e96f3379c860bdb67875c9d7616e'
+account_sid = 'AC467d3314af4d8c76c9411537b69106ef'
+auth_token = 'fa1682652557b7d7451f1754eab20948'
 
 # Your Twilio phone number
-twilio_phone_number = '+13344893749'
+twilio_phone_number = '+12052363623'
 
 # Recipient phone number where you want to send the SMS
-recipient_phone_number = '+27763237618'
+recipient_phone_number = '+27661862212'
 
 def main():
     points = []
@@ -35,7 +35,7 @@ def main():
     cv2.namedWindow('FRAME')  # Create a named window without specific properties
     cv2.setMouseCallback('FRAME', POINTS)
 
-    model = torch.hub.load('ultralytics/yolov5', 'custom', path='BigDataset.pt')
+    model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5s.pt')
 
     cap = cv2.VideoCapture('Sheep3.mp4')  # Change the video file name to the one with sheep
 

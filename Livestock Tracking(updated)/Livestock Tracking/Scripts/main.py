@@ -2,22 +2,16 @@ import cv2
 import torch
 import numpy as np
 from twilio.rest import Client
-import pandas as pd
-
 
 # Your Twilio Account SID and Auth Token
 account_sid = 'AC467d3314af4d8c76c9411537b69106ef'
-auth_token = '32e439d70bb911790a061b997fbdb7f8'
+auth_token = 'fa1682652557b7d7451f1754eab20948'
 
 # Your Twilio phone number
 twilio_phone_number = '+12052363623'
 
 # Recipient phone number where you want to send the SMS
 recipient_phone_number = '+27661862212'
-
-# Threshold for high temperature (adjust as needed)
-high_temp_threshold = 38.0  # Example threshold, change it accordingly
-
 
 def main():
     points = []
@@ -41,13 +35,11 @@ def main():
     cv2.namedWindow('FRAME')
     cv2.setMouseCallback('FRAME', points)
 
-    model = torch.hub.load('ultralytics/yolov5', 'custom', path='BigDataset.pt')
+    model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5s.pt')
 
     cap = cv2.VideoCapture('Cows.mp4')
 
     cow_list = []  # List to store tracked cows
-    cow_temperatures = []  # List to store temperatures of cows
-    sms_message = ""  # Initialize SMS message as an empty string
 
     frame_counter = 0
     process_every_n_frames = 2  # Process every second frame
@@ -80,11 +72,6 @@ def main():
                     cv2.putText(frame, str(d), (x1, y1), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 2)
                     cow_list.append((cx, cy))
 
-                    # Simulate temperature measurement (replace with actual measurement)
-                    temperature = np.random.uniform(36.0, 40.0)  # Example temperature, replace with actual reading
-                    temperature = round(temperature, 2)  # Round to 2 decimal places
-                    cow_temperatures.append(temperature)
-
         cv2.putText(frame, f"Total Cows: {len(cow_list)}", (50, 49), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 2)
 
         cv2.imshow("FRAME", frame)
@@ -94,27 +81,11 @@ def main():
     cap.release()
     cv2.destroyAllWindows()
 
-    # Calculate average temperature
-    if cow_temperatures:
-        avg_temperature = sum(cow_temperatures) / len(cow_temperatures)
-        avg_temperature = round(avg_temperature, 2)  # Round to 2 decimal places
-        sms_message += f"Total cows: {len(cow_list)}, Average Temperature: {avg_temperature}°C\n"
+    # Send an SMS with the count
+    sms_message = f"Total Cows Counted: {len(cow_list)}"
+    send_sms(sms_message)
 
-    # Check for cows over the temperature threshold and include in the SMS
-    high_temp_cows = [f"Cow {i + 1}: {temp}°C" for i, temp in enumerate(cow_temperatures) if temp > high_temp_threshold]
-    if high_temp_cows:
-        sms_message += "\nCows with high temperature:\n" + "\n".join(high_temp_cows)
-
-    # Send a single SMS with all the information
-    if sms_message:
-        send_sms(sms_message)
-
-    # Save the counts to a text file
-    with open("cow_counts.txt", "w") as file:
-        file.write(str(len(cow_list)) + "\n")
-
-    print("Count of unique cows saved to cow_counts.txt and SMS sent.")
-
+    print("Count of unique cows sent via SMS.")
 
 def is_near(point, cow, threshold):
     cow_center = cow

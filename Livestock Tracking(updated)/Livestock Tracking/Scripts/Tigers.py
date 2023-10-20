@@ -37,8 +37,7 @@ def main():
 
     # Load your best.pt model
 
-    #model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt')
-    model = torch.hub.load('ultralytics/yolov5', 'custom', path='BigDataset.pt')
+    model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt')
 
     cap = cv2.VideoCapture('Tigers.mp4')  # Change the video file name to the one with tigers
 
@@ -46,7 +45,7 @@ def main():
     sms_message = ""  # Initialize SMS message as an empty string
 
     frame_counter = 0
-    process_every_n_frames = 2  # Process every second frame
+    process_every_n_frames = 3  # Process every second frame
     distance_threshold = 100  # Adjust this threshold as needed
 
     while True:
@@ -71,7 +70,12 @@ def main():
             cx = int((x1 + x2) / 2)
             cy = int((y1 + y2) / 2)
             if 'tiger' in d:  # Adjust to 'tiger'
-                if not any(is_near((cx, cy), tiger, distance_threshold) for tiger in tiger_list):
+                detected = False
+                for tiger in tiger_list:
+                    if is_near((cx, cy), tiger, distance_threshold):
+                        detected = True
+                        break
+                if not detected:
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 255), 3)
                     cv2.putText(frame, str(d), (x1, y1), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 2)
                     tiger_list.append((cx, cy))
@@ -86,9 +90,7 @@ def main():
     cv2.destroyAllWindows()
 
     # Send a single SMS with the total number of tigers detected
-    sms_message = f"" \
-                  f"Warning! Dangerous animal detected!" \
-                  f" Total tigers detected: {len(tiger_list)}"
+    sms_message = f"Total tigers detected: {len(tiger_list)}"
     send_sms(sms_message)
 
     # Save the counts to a text file

@@ -6,7 +6,7 @@ import time
 
 # Your Twilio Account SID and Auth Token
 account_sid = 'AC467d3314af4d8c76c9411537b69106ef'
-auth_token = '32e439d70bb911790a061b997fbdb7f8'
+auth_token = 'fa1682652557b7d7451f1754eab20948'
 
 # Your Twilio phone number
 twilio_phone_number = '+12052363623'
