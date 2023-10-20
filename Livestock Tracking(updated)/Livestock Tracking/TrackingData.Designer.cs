@@ -387,6 +387,7 @@
             // btnSearchClear
             // 
             this.btnSearchClear.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnSearchClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSearchClear.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnSearchClear.Location = new System.Drawing.Point(328, 472);
