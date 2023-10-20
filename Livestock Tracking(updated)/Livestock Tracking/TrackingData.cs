@@ -526,7 +526,6 @@ namespace Livestock_Tracking
             }
         }
 
-
         // This event is for launching a morning flight.
         private void btnMorning_Click(object sender, EventArgs e)
         {
@@ -558,80 +557,6 @@ namespace Livestock_Tracking
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
-
-        // Methods for navigating to different pages on the form to see specific animal data. 
-        //private void btnOverallNav_Click(object sender, EventArgs e)
-
-        //public void Thermal()
-        //{
-        //    string path = @"..\..\Scripts\temperature.txt";
-        //    string text = File.ReadAllText(path);
-
-        //    string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-        //    string scriptPath = @"..\Scripts\Thermal.py"; 
-
-        //    Process process = new Process();
-        //    process.StartInfo.FileName = pythonPath;
-        //    process.StartInfo.Arguments = scriptPath;
-        //    process.StartInfo.UseShellExecute = false;
-        //    process.StartInfo.RedirectStandardOutput = true;
-        //    process.StartInfo.CreateNoWindow = true;
-
-        //    process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-            
-        //    process.Start();
-
-        //    string output = process.StandardOutput.ReadToEnd();
-
-        //    process.WaitForExit();
-
-        //    MessageBox.Show("Python script executed:\n" + output);
-        //}
-
-
-        //public void simulateDroneFlightTigers()
-        //{
-        //    string path = @"..\..\Scripts\tiger_counts.txt";
-        //    string text = File.ReadAllText(path);
-
-        //    string pythonPath = @"..\..\Scripts\venv\Scripts\python.exe"; 
-        //    string scriptPath = @"..\Scripts\Tigers.py"; 
-
-        //    Process process = new Process();
-        //    process.StartInfo.FileName = pythonPath;
-        //    process.StartInfo.Arguments = scriptPath;
-        //    process.StartInfo.UseShellExecute = false;
-        //    process.StartInfo.RedirectStandardOutput = true;
-        //    process.StartInfo.CreateNoWindow = true;
-
-        //    process.StartInfo.WorkingDirectory = @"..\..\Scripts";
-
-        //    process.Start();
-
-        //    string output = process.StandardOutput.ReadToEnd();
-
-        //    process.WaitForExit();
-
-        //    MessageBox.Show("Python script executed:\n" + output);
-
-
-
-            
-
-        //}
-
-
-        //private void btnTiger_Click(object sender, EventArgs e)
-        //{
-        //    simulateDroneFlightTigers();
-        //}
-
-        //private void btnThermal_Click(object sender, EventArgs e)
-        //{
-        //    Thermal();
-        //}
 
         private void btnCows1_Click(object sender, EventArgs e)
         {
